@@ -24,6 +24,7 @@ function renderComponent() {
 test('shows a link to the github homepage for this repository', async () => {
   const { repository } = renderComponent();
 
+  //Prevents the act warning.
   await screen.findByRole('img', { name: 'Javascript' });
 
   const link = screen.getByRole('link', {
@@ -31,14 +32,6 @@ test('shows a link to the github homepage for this repository', async () => {
   });
   expect(link).toHaveAttribute('href', repository.html_url);
 });
-
-const pause = () => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve();
-    }, 100);
-  });
-};
 
 test('shows a fileicon with the appropriate icon', async () => {
   renderComponent();
